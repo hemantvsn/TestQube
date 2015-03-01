@@ -1,0 +1,90 @@
+<div class="panel panel-success">
+	<div class="panel-heading">Add Student in your class</div>
+	<div class="panel-body">
+<form name="addStudentForm" role="form">
+	<div class="form-group">
+
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-3">
+				<input type="text" value="" placeholder="FIRST NAME" class="form-control" ng-model="student.firstname">
+			</div>
+
+			<div class="col-xs-3">
+				<input type="text" value="" placeholder="LAST NAME"	class="form-control" ng-model="student.lastname">
+			</div>
+
+		</div>
+		<!-- ------------------------------------------------------------------------- -->
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-6">
+				<input type="email" value="" placeholder="EMAIL" class="form-control" ng-model="student.email">
+			</div>
+
+		</div>
+		<!-- ------------------------------------------------------------------------- -->
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-6">
+				<div class="input-group">
+  					<span class="input-group-addon" id="basic-addon1">+91</span>
+					<input type="number" value="" placeholder="MOBILE NUMBER" class="form-control" ng-model="student.mobile">
+				</div>
+			</div>
+		</div>
+
+		<!-- ------------------------------------------------------------------------- -->
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-6">
+				<input type="text" class="form-control" 
+					placeholder="BIRTHDAY" name="date" bs-datepicker
+					data-date-format="dd-MMM-yyyy" ng-model="student.dob">
+			</div>
+		</div>
+
+		<!-- ------------------------------------------------------------------------- -->
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-3">
+
+				<label class="radio"> 
+					<input type="radio" name="sex" id="male" value="male" data-toggle="radio" checked="" class="custom-radio" ng-model="student.sex">
+						 <span class="icons"> 
+						 	<span class="icon-unchecked"></span> 
+						 	<span class="icon-checked"></span>
+						</span>
+						<span>MALE</span>
+				</label>
+
+			</div>
+
+
+			<div class="col-xs-3">
+				<label class="radio">
+					 <input type="radio" name="sex"	id="female" value="female" data-toggle="radio" class="custom-radio" ng-model="student.sex">
+						<span class="icons"> 
+							<span class="icon-unchecked"></span> 
+							<span class="icon-checked"></span>
+						</span>
+						<span>FEMALE</span>
+
+				</label>
+			</div>
+		</div>
+
+
+
+
+		<!-- ------------------------------------------------------------------------- -->
+		<div class="row demo-row" style="margin-bottom: 20px;">
+			<div class="col-xs-2">
+
+				<button type="submit" class="btn btn-block btn-success" ng-click="addStudent()">ADD STUDENT</button>
+
+			</div>
+			<div class="col-xs-2">
+				<button type="reset" class="btn btn-block btn-info"><b>RESET DATA</b></button>
+			</div>
+		</div>
+
+	</div>
+</form>
+</div>
+</div>

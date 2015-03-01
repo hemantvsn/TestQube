@@ -1,0 +1,76 @@
+<div class="panel panel-success">
+	<div class="panel-heading">Add TEST</div>
+	<div class="panel-body">
+		<form name="addStudentForm" role="form">
+			<div class="form-group">
+
+
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-3">
+						<input type="text" value="" placeholder="TEST NAME"
+							class="form-control" ng-model="test.name">
+					</div>
+				</div>
+				<!-- ------------------------------------------------------------------------- -->
+
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-3">
+						<select ui-select2 ng-model="test.type"
+							ng-change="populateOptions()" class="form-control"
+							placeholder="SELECT TEST TYPE">
+							<option value=""></option>
+							<option value="1">CET</option>
+							<option value="2">CMAT</option>
+							<option value="3">GRE</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- ------------------------------------------------------------------------- -->
+				<div class="panel panel-info" ng-show="test.type>0">
+				<div class="panel-heading">More Info On Test Type</div>
+					<div class="panel-body">
+				
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Total Questions : {{testType.questions}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Total Time : {{testType.time}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Positive marks per question :
+								{{testType.positive}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Negative marks per question :
+								{{testType.negative}}</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ------------------------------------------------------------------------- -->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-2">
+
+						<button type="submit" class="btn btn-block  btn-success"
+							ng-click="addTest()">ADD TEST</button>
+
+					</div>
+					<div class="col-xs-2">
+						<button type="reset" class="btn btn-block  btn-info">RESET
+							DATA</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	</body>
+	</html>

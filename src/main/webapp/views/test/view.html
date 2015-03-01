@@ -1,0 +1,70 @@
+<div class="panel panel-success">
+	<div class="panel-heading">VIEW TEST</div>
+	<div class="panel-body">
+		
+
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-3">
+						<input type="text" value="" placeholder="TEST NAME"
+							class="form-control" ng-model="test.name" disabled="disabled">
+					</div>
+				</div>
+				<!-- ------------------------------------------------------------------------- -->
+
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-3">
+						<select ui-select2 ng-model="test.type"
+							ng-change="populateOptions()" class="form-control"
+							placeholder="SELECT TEST TYPE" disabled="disabled">
+							<option value=""></option>
+							<option value="1">CET</option>
+							<option value="2">CMAT</option>
+							<option value="3">GRE</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- ------------------------------------------------------------------------- -->
+				 <accordion close-others="true">
+    				<accordion-group heading="More Info on Test Type" class="panel-info">
+    				<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Total Questions : {{testType.questions}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Total Time : {{testType.time}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Positive marks per question :
+								{{testType.positive}}</div>
+						</div>
+		
+						<!-- ------------------------------------------------------------------------- -->
+						<div class="row demo-row" style="margin-bottom: 20px;">
+							<div class="col-xs-3">Negative marks per question :
+								{{testType.negative}}</div>
+						</div>
+    				
+      					
+    				</accordion-group>
+    			</accordion>
+				
+
+				<!-- ------------------------------------------------------------------------- -->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-3">
+
+						<a class="btn btn-block  btn-success" href="#/admin/tests/{{testId}}/questions/add">ADD QUESTIONS TO THIS TEST</a>
+
+					</div>
+					
+				</div>
+			
+
+	</div>
+	</body>
+	</html>

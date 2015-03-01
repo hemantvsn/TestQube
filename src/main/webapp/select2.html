@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flat UI - Free Bootstrap Framework and Theme</title>
+<meta name="description"
+	content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version." />
+
+<meta name="viewport"
+	content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Loading Bootstrap -->
+<link href="dist/css/vendor/bootstrap.min.css" rel="stylesheet">
+<link href="dist/css/flat-ui.css" rel="stylesheet">
+<link href="dist/css//select2/select2.css" rel="stylesheet">
+
+<script src="dist/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="dist/js/flat-ui.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<script src="dist/js/select2/select2.min.js"></script>
+<script src="dist/js/select2/select2-angular.js"></script>
+
+
+
+<script type="text/javascript">
+  var myAppModule = angular.module('myApp', ['ui.select2']);
+  
+  myAppModule.controller('HemController', function($scope) {
+  
+	    $scope.select2Options = {
+	            width : "100%"
+	        };
+	    
+	    $scope.select3Options = {
+		        'multiple': true,
+		        'simple_tags': true,
+		        'tags': ['tag1', 'tag2', 'tag3', 'tag4']  // Can be empty list.
+		    };
+	  });
+  
+
+  </script>
+
+
+</head>
+<body ng-app="myApp">
+	<div class="container" ng-controller="HemController">
+		<br /> <br /> <br />
+		<div class="col-xs-3">
+
+			<select ui-select2="select2Options" ng-model="select2"
+				class="select-primary" data-placeholder="Pick a number Please">
+				<option value=""></option>
+				<option value="one">First Is the Nest</option>
+				<option value="two">Second</option>
+				<option value="two3">Second3</option>
+				<option value="two4">Second3</option>
+				<option value="two5">Second3</option>
+				<option value="two6">Second3</option>
+
+			</select>
+
+
+		</div>
+		
+		
+				<div class="col-xs-3" class="form-group">
+
+ 		<div class="tagsinput-primary">
+			data-role="tagsinput"
+            <input
+            ui-select2="select3Options" ng-model="list_of_string">
+            </div>
+ 
+
+<select ui-select2="select2Options" ng-model="select3" multiple="multiple"
+				class="select-danger" data-placeholder="Pick a number Please">
+				
+				<option value="one">First Is the Nest</option>
+				<option value="two">Second11111111</option>
+				<option value="two1">Second1</option>
+				<option value="two2">Second2</option>
+				<option value="two3">Second3</option>
+				<option value="two4">Second3</option>
+				<option value="two5">Second3</option>
+				<option value="two6">Second3</option>
+
+			</select>
+
+		</div>
+		
+	</div>
+	
+	<code>Hemant</code>
+</body>
+
+
+</html>

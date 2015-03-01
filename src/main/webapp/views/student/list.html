@@ -1,0 +1,31 @@
+<div class="panel panel-success">
+	<div class="panel-heading">View the list of all students in your
+		class and view their profile, remove them.</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>DOB</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="student in students">
+					<th>{{$index+1}}</th>
+					<td>{{student.firstname}} {{student.lastname}}</td>
+					<td>{{student.email}}</td>
+					<td>{{student.mobile}}</td>
+					<td>{{student.dob| date:'dd-MMM-yyyy'}}</td>
+					<td>
+						<span title="remove {{student.firstname}} {{student.lastname}}" style="color: red" class="glyphicon glyphicon-remove" ng-click="removeStudent($index)"></span>
+						<a href="#admin/students/{{student.id}}"><span class="glyphicon glyphicon-search"></span></a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>

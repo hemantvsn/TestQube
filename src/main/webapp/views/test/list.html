@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+	<div class="panel-heading">View All Tests.</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Type</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="test in tests">
+					<th>{{$index+1}}</th>
+					<td>{{test.name}}</td>
+					<td>{{test.type}}</td>
+					<td>
+						<a style="color:red" class="glyphicon glyphicon-remove" ng-click="removeTest($index)"></a>
+						<a class="glyphicon glyphicon-search" href="#admin/tests/{{test.id}}"></a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>

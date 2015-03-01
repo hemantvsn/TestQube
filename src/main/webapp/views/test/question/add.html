@@ -1,0 +1,142 @@
+
+<div class="progress">
+	<div class="progress-bar progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{completed}}%">
+		{{completed}}%
+	</div>
+</div>
+
+
+<accordion close-others="true"> 
+	<accordion-group ng-repeat="question in test.questions" heading="{{$index+1}}.  {{question.text}}" class="panel-info"> 
+		
+  	<ul class="nav nav-stacked">
+	  <li ng-class="{'btn-success' :question.correctOption==1}"><b>a. </b> {{question.option1.text}}</li>
+	  <li ng-class="{'btn-success' :question.correctOption==2}"><b>b. </b> {{question.option2.text}}</li>
+	  <li ng-class="{'btn-success' :question.correctOption==3}"><b>c. </b> {{question.option3.text}}</li>
+	  <li ng-class="{'btn-success' :question.correctOption==4}"><b>d. </b> {{question.option4.text}}</li>
+	</ul>
+					
+	</accordion-group>
+</accordion>
+
+<accordion close-others="false"> 
+	<accordion-group heading="Add Test Question" class="panel-success">
+		<form name="myForm" role="form">
+			<div class="form-group">
+				<!--------------------------------Question TEXT--------------------------------------------->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-10">
+						<textarea class="form-control" name="text" ng-model="question.text" placeholder="QUESTION TEXT" required="required"></textarea>
+						<span style="color:red" ng-show="myForm.text.$invalid">
+							<span ng-show="myForm.text.$error.required">REQUIRED.</span>
+						</span>
+					</div>
+				</div>
+				
+				<!--------------------------------------OPTION1---------------------------------------------->
+				<div class="row demo-row"  style="margin-bottom: 20px;">
+					<div class="col-xs-5">
+						<textarea class="form-control" name="option1" ng-model="question.option1.text" placeholder="OPTION1" required="required"></textarea>
+						<span style="color:red" ng-show="myForm.option1.$invalid">
+							<span ng-show="myForm.option1.$error.required">REQUIRED.</span>
+						</span>
+					</div>
+	
+					<div class="col-xs-5">
+						<label class="radio">
+						 	<input type="radio" name="option" value="1" data-toggle="radio" checked="checked" class="custom-radio" ng-model="question.correctOption"> 
+							<span class="icons"> 
+								<span class="icon-unchecked"></span> 
+								<span class="icon-checked"></span>
+							</span>
+							<span>CORRECT</span>
+						</label>
+					</div>
+	
+				</div>
+				
+				<!--------------------------------------OPTION2---------------------------------------------->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-5">
+						<textarea class="form-control" ng-model="question.option2.text" placeholder="OPTION2"></textarea>
+						<span style="color:red" ng-show="myForm.option1.$invalid">
+							<span ng-show="myForm.option1.$error.required">REQUIRED.</span>
+						</span>
+					</div>
+	
+					<div class="col-xs-5">
+						<label class="radio">
+						 	<input type="radio" name="option" name="option2" required="required" value="2" data-toggle="radio" class="custom-radio" ng-model="question.correctOption"> 
+							<span class="icons"> 
+								<span class="icon-unchecked"></span> 
+								<span class="icon-checked"></span>
+							</span>
+							<span>CORRECT</span>
+						</label>
+					</div>
+	
+				</div>
+				
+				<!--------------------------------------OPTION3---------------------------------------------->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-5">
+						<textarea class="form-control" name="option3" ng-model="question.option3.text" placeholder="OPTION3" required="required"></textarea>
+						<span style="color:red" ng-show="myForm.option3.$invalid">
+							<span ng-show="myForm.option3.$error.required">REQUIRED.</span>
+						</span>
+					</div>
+	
+					<div class="col-xs-5">
+						<label class="radio">
+						 	<input type="radio" name="option" value="3" data-toggle="radio" class="custom-radio" ng-model="question.correctOption"> 
+							<span class="icons"> 
+								<span class="icon-unchecked"></span> 
+								<span class="icon-checked"></span>
+							</span>
+							<span>CORRECT</span>
+						</label>
+					</div>
+	
+				</div>
+				
+				<!--------------------------------------OPTION4---------------------------------------------->
+				<div class="row demo-row" style="margin-bottom: 20px;">
+					<div class="col-xs-5">
+						<textarea class="form-control" name="option4" ng-model="question.option4.text" placeholder="OPTION4" required="required"></textarea>
+						<span style="color:red" ng-show="myForm.option4.$invalid">
+							<span ng-show="myForm.option4.$error.required">REQUIRED.</span>
+						</span>
+					</div>
+	
+					<div class="col-xs-5">
+						<label class="radio">
+						 	<input type="radio" name="option" value="4" data-toggle="radio" class="custom-radio" ng-model="question.correctOption"> 
+							<span class="icons"> 
+								<span class="icon-unchecked"></span> 
+								<span class="icon-checked"></span>
+							</span>
+							<span>CORRECT</span>
+						</label>
+					</div>
+	
+				</div>
+				
+					<!-- ------------------------------------------------------------------------- -->
+			<div class="row demo-row" style="margin-bottom: 20px;">
+				<div class="col-xs-2">
+	
+					<button type="submit" class="btn btn-block btn-success" ng-click="addQuestion()">ADD QUESTION</button>
+	
+				</div>
+				<div class="col-xs-2">
+					<button type="reset" class="btn btn-block btn-info"><b>RESET DATA</b></button>
+				</div>
+			</div>
+	
+	
+	
+	
+	</div>
+</form>
+</accordion-group>
+</accordion>

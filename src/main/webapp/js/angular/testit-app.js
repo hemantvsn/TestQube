@@ -1,4 +1,4 @@
-var app = angular.module("testit", ['ngRoute','mgcrea.ngStrap','ui.select2','ui.bootstrap','testit.services']);
+var app = angular.module("testit", ['ngRoute', 'ngSanitize','mgcrea.ngStrap','ui.select2','ui.bootstrap','testit.services','ui.tinymce']);
 app.controller("NavCtrl", function($scope) {
 
 	$scope.menu = [ {

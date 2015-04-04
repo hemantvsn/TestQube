@@ -7,7 +7,11 @@
 
 
 <accordion close-others="true"> 
-	<accordion-group ng-repeat="question in test.questions" heading="{{$index+1}}.  {{question.text}}" class="panel-info"> 
+	<accordion-group ng-repeat="question in test.questions" class="panel-info"> 
+	        <accordion-heading>
+	        <h2>{{$index+1}}</h2>
+            <h3 ng-bind-html="question.text"></h3>
+        </accordion-heading>
 		
   	<ul class="nav nav-stacked">
 	  <li ng-class="{'btn-success' :question.correctOption==1}"><b>a. </b> {{question.option1.text}}</li>
@@ -26,7 +30,7 @@
 				<!--------------------------------Question TEXT--------------------------------------------->
 				<div class="row demo-row" style="margin-bottom: 20px;">
 					<div class="col-xs-10">
-						<textarea class="form-control" name="text" ng-model="question.text" placeholder="QUESTION TEXT" required="required"></textarea>
+						<textarea ui-tinymce class="form-control" name="text" ng-model="question.text" placeholder="QUESTION TEXT" required="required"></textarea>
 						<span style="color:red" ng-show="myForm.text.$invalid">
 							<span ng-show="myForm.text.$error.required">REQUIRED.</span>
 						</span>

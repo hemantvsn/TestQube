@@ -10,37 +10,106 @@
 
 	<properties>
 		<hibernate.version>4.3.8.Final</hibernate.version>
+		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 	</properties>
 
 
 	<dependencies>
+	
+	<!--************************************ 1 START: Mandatory dependencies ************************************-->
+	
+		<!-- 1.1 JUNIT  -->	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- 1.2 PostGresSQL JDBC Driver -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1200-jdbc41</version>
+		</dependency>
+	
+	
+	<!--************************************ 1 END: Mandatory dependencies ************************************-->
 
-		<!-- Added Hibernate Core latest version -->
+	<!--************************************ 2 START : BASIC DEPENDENCIES FOR ORM ************************************-->
+		
+		<!-- 2.1 Hibernate core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 
+		<!-- 2.2 Hibernate-JPA integration -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-
-
-		<!-- PostGresSQL JDBC Driver -->
+		
+	<!--************************************ 2 END : BASIC DEPENDENCIES FOR ORM ************************************-->
+		
+		
+	<!--************************************ 3 START: Spring CORE dependencies ************************************-->
+		
+		<!-- 3.1 Spring CORE - bean factory -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1200-jdbc41</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
+
+		<!-- 3.2  spring-webmvc is an implementation of Spring MVC. 
+		  spring-webvc depends on on spring-web, thus including it will transitively add spring-web.		     
+		  You don't have to add spring-web explicitly.-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- 3.3 Spring-orm for communication with DB -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+	<!--************************************ 3 START: Spring 4 dependencies ************************************-->
+		
+	<!--************************************ 4 START: Spring Security ************************************-->
+	
+		<!-- 4.1 Spring web security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		
+		<!-- Spring  
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency> -->
+	
+	<!--************************************ 4 END: Spring Security ************************************-->	
+		
+	<!--************************************ 5 START: Database Connection Pooling (DBCP) ************************************-->
+		<!-- 5.1 BoneCP is fast! For some tests, it's almost 25 times faster than the next fastest connection pool option -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+			<version>0.8.0.RELEASE</version>
+		</dependency>
+		
+	<!--************************************ 5 END: Database Connection Pooling (DBCP) ************************************-->
 
 	</dependencies>
 	<build>

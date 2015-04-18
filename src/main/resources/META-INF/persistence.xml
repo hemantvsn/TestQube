@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+This is common place for common properties irrespective of to which DB we want to connect.
+Here we can also configure DB (jdbc url, user, pwd). But since we are conecting to multiple DB's,
+we are configuring the DB details programatically.
+But whatever are common properties irrespective of DB, we add them here
+
+NOTE: Multiple DB's benefit from the same persistance unit name.
+
+
+ -->
+
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="SHASM" transaction-type="RESOURCE_LOCAL">
-		<validation-mode>NONE</validation-mode>
-		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.id.new_generator_mappings" value="true" />
-			<!-- <property name="hibernate.show_sql" value="true"/> -->
-			<property name="hibernate.archive.autodetection" value="class,hbm" />
-
-			<!-- Any changes in the class attributes, it causes to automatically reflect 
-				in its corressponding table -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-
-			<property name="hibernate.jdbc.use_get_generated_keys"
-				value="false" />
-		</properties>
 	</persistence-unit>
 </persistence>

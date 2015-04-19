@@ -28,6 +28,9 @@
   font-size: 20px;
   cursor: pointer;
 }
+.checkbox .icons{
+	line-height: 34px;
+}
 .checkbox .icons .icon-checked,
 .radio .icons .icon-checked {
   opacity: 0;

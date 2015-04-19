@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+
 @Entity
 public class UserPassword implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,13 +20,17 @@ public class UserPassword implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	private User user;
+	private Users user;
 	private String digest;
 	private String salt;
 	private String digestAlgorithm = "SHA1";
 
 	public UserPassword(String salt) {
 		setSalt(salt);
+	}
+
+	public UserPassword() {
+		
 	}
 
 	public String getDigest() {
@@ -33,32 +40,45 @@ public class UserPassword implements Serializable {
 	public String getDigestAlgorithm() {
 		return digestAlgorithm;
 	}
+	
 
 	public int getId() {
 		return this.id;
 	}
 
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
 
-	private String makeDigest(String password) {
+	private String makeDigest(String userEnteredPwd) {
 
-		if ((password != null) && !password.isEmpty()
-				&& (digestAlgorithm != null)) {
-			// String salt= user.getSalt();
-			if ((salt == null) || salt.isEmpty()) {
-				return null;
-			}
-			/* return Util.makeHexDigest(salt + password, digestAlgorithm); */
+		if (StringUtils.isEmpty(userEnteredPwd) || StringUtils.isEmpty(salt) || StringUtils.isEmpty(digestAlgorithm)) {
+			throw new RuntimeException("Incomplete data for generating digest");			
 		}
+		//strength EX: 1, 256, 384, 512
+		int strength =0;
+		switch (digestAlgorithm) {
+		
+		case "SHA1":
+			strength = 1;
+			break;
 
-		return null;
+		case "SHA256":
+			strength = 256;
+			break;
+
+		default:
+			throw new RuntimeException("No matching encoder found");
+		}
+		
+		ShaPasswordEncoder encoder = new ShaPasswordEncoder(strength);
+		return encoder.encodePassword(userEnteredPwd, salt);
+		
 	}
 
 	public boolean matches(String password) {
 		// If we don't have a digest set, match fails.
-		if ((digest == null) || digest.isEmpty()) {
+		if (StringUtils.isEmpty(digest)) {
 			return false;
 		}
 
@@ -77,7 +97,7 @@ public class UserPassword implements Serializable {
 		this.id = id;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 		if (user != null) {
 			this.id = user.getId();

@@ -1,0 +1,31 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+
+<!-- The <http> element automatically sets up a FilterChainProxy (which is delegated to by the DelegatingFilterProxy we configured in web.xml)
+     and all of the filter beans in the chain. 
+     auto-config attribute to true . Autoconfiguration gives our application a free login
+     page, support for HTTP Basic authentication, and support for logging out.-->
+<http auto-config="true">
+	<!--
+	<intercept-url pattern="admin/**" access="ROLE_ADMIN" /> 
+	-->
+	<intercept-url pattern="/**" access="ROLE_USER"  />
+	
+	<form-login login-processing-url="/do/login" login-page="/login" authentication-failure-url="/login?login_error=t" default-target-url="/index.action"/>
+	<logout invalidate-session="true" logout-url="/do/logout" delete-cookies="true" logout-success-url="/login"/>
+</http>
+
+<!-- 1. The first TUMBLR to be unlocked is authenticating user ==>WHO IS HE-->
+<authentication-manager>
+		<authentication-provider ref="authProvider"/>
+</authentication-manager>
+	
+<beans:bean id="authProvider" class="com.shasm.security.CustomAuthenticationProvider">
+	
+	</beans:bean>
+</beans:beans>

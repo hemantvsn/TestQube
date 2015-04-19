@@ -13,7 +13,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import com.jolbox.bonecp.BoneCPDataSource;
-import com.shasm.model.users.User;
+import com.shasm.model.users.Users;
 
 
 public class DBUtil {
@@ -41,7 +41,7 @@ public class DBUtil {
 		if (factory == null) {
 			LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		    factoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
-		    factoryBean.setPackagesToScan("com.shasm.model");
+		    factoryBean.setPackagesToScan("com.shasm.model.users");
 		    factoryBean.setDataSource(createDataSource(orgId));
 		    factoryBean.setJpaVendorAdapter(getJPAVendorAdapter());
 		    factoryBean.afterPropertiesSet();
@@ -81,7 +81,7 @@ public class DBUtil {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 		
-		User user = new User();
+		Users user = new Users();
 		user.setEmail("xxx");
 		em.persist(user);
 		transaction.commit();
